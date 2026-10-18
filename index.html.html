@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIRUNEX | Next-Generation Forex & CFD Trading Platform</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1457697959581522');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1457697959581522&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        lxCyan: {
+                            DEFAULT: '#00a8c5',
+                            hover: '#008ba4',
+                            light: '#00ccf0',
+                            glow: 'rgba(0, 168, 197, 0.4)',
+                            bg: '#041017'
+                        },
+                        lxDark: {
+                            DEFAULT: '#050911',
+                            card: '#0a121d',
+                            border: '#152233',
+                            input: '#0d1726'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050911;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated Trading Motion Graphics CSS */
+        @keyframes chartPulse {
+            0%, 100% { stroke-dashoffset: 1000; opacity: 0.6; }
+            50% { stroke-dashoffset: 0; opacity: 1; }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.02); }
+        }
+        @keyframes signalGlow {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+        }
+
+        .animate-chart-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: chartPulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .animate-float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .animate-signal-glow {
+            animation: signalGlow 3s ease-in-out infinite;
+        }
+
+        /* Glassmorphism card styling */
+        .glass-hero-card {
+            background: linear-gradient(145deg, rgba(10, 18, 29, 0.95), rgba(5, 12, 22, 0.98));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 168, 197, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 168, 197, 0.15);
+        }
+
+        /* Hero Background Grid Pattern */
+        .trading-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 168, 197, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 168, 197, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-[#050911] text-slate-200 antialiased selection:bg-lxCyan selection:text-white">
+
+<header class="sticky top-0 z-50 bg-[#050911]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        <!-- Lirunex Logo -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none">
+            <div class="flex items-center">
+                <!-- LX Logo SVG matching official brand guidelines -->
+                <svg class="h-8 sm:h-10 w-auto text-lxCyan transition-transform duration-300 group-hover:scale-105" viewBox="0 0 120 70" fill="currentColor">
+                    <path d="M0,0 L24,0 L24,50 L48,50 L48,70 L0,70 Z" />
+                    <path d="M52,0 L78,35 L52,70 L76,70 L90,50 L104,70 L128,70 L102,35 L128,0 L104,0 L90,20 L76,0 Z" />
+                </svg>
+                <span class="ml-3 text-2xl sm:text-3xl font-black tracking-wider text-white">LIRUNEX</span>
+            </div>
+        </a>
+
+        <!-- Header Action Button -->
+        <div>
+            <a href="#signup-form" class="inline-flex items-center justify-center px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-bold tracking-wide uppercase text-white bg-gradient-to-r from-lxCyan to-teal-500 hover:from-lxCyan-hover hover:to-teal-600 rounded-xl shadow-lg shadow-lxCyan/20 hover:shadow-lxCyan/40 transition-all transform hover:-translate-y-0.5 border border-lxCyan/30">
+                <i class="fa-solid fa-user-plus mr-2 text-xs"></i> Open Account
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<section class="relative min-h-[calc(100vh-80px)] py-8 sm:py-12 lg:py-16 overflow-hidden flex items-center justify-center trading-grid-pattern">
+    
+    <!-- Hero Motion Graphics Background Layers (Spanning Full Top and Bottom) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- Radial Brand Ambient Glows Top and Bottom -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-lxCyan/20 rounded-full blur-[140px]"></div>
+        <div class="absolute bottom-0 right-10 w-[500px] h-[350px] bg-teal-500/15 rounded-full blur-[120px]"></div>
+
+        <!-- TOP & BOTTOM ANIMATED MOTION GRAPHICS SVG CHART LINES & TRADING SIGNALS -->
+        <svg class="absolute inset-0 w-full h-full opacity-40" preserveAspectRatio="none" viewBox="0 0 1200 800" fill="none">
+            <!-- Grid Line Accents -->
+            <line x1="0" y1="120" x2="1200" y2="120" stroke="#00a8c5" stroke-opacity="0.15" stroke-dasharray="4 4" />
+            <line x1="0" y1="380" x2="1200" y2="380" stroke="#00a8c5" stroke-opacity="0.1" stroke-dasharray="4 4" />
+            <line x1="0" y1="680" x2="1200" y2="680" stroke="#00a8c5" stroke-opacity="0.18" stroke-dasharray="4 4" />
+
+            <!-- Top Motion Graph Signal Line -->
+            <path d="M-50,180 Q200,80 450,150 T900,60 T1250,120" stroke="url(#cyanGradientTop)" stroke-width="3" fill="none" class="animate-chart-line"/>
+            
+            <!-- Bottom Motion Graph Signal Line -->
+            <path d="M-50,720 Q300,620 600,690 T1000,580 T1250,650" stroke="url(#cyanGradientBottom)" stroke-width="3" fill="none" class="animate-chart-line" style="animation-duration: 10s;"/>
+
+            <!-- Top Signal Points -->
+            <g class="animate-signal-glow">
+                <circle cx="200" cy="115" r="5" fill="#00a8c5"/>
+                <circle cx="200" cy="115" r="12" fill="#00a8c5" fill-opacity="0.3"/>
+                <text x="215" y="110" fill="#00ccf0" font-size="11" font-family="monospace">BUY EUR/USD 1.0852</text>
+            </g>
+
+            <g class="animate-signal-glow" style="animation-delay: 2s;">
+                <circle cx="900" cy="60" r="5" fill="#10b981"/>
+                <circle cx="900" cy="60" r="12" fill="#10b981" fill-opacity="0.3"/>
+                <text x="915" y="55" fill="#10b981" font-size="11" font-family="monospace">+185 PIPS HIGH</text>
+            </g>
+
+            <!-- Bottom Signal Points -->
+            <g class="animate-signal-glow" style="animation-delay: 1s;">
+                <circle cx="300" cy="620" r="5" fill="#00a8c5"/>
+                <circle cx="300" cy="620" r="12" fill="#00a8c5" fill-opacity="0.3"/>
+                <text x="315" y="615" fill="#00ccf0" font-size="11" font-family="monospace">GOLD EXECUTED 2384.50</text>
+            </g>
+
+            <g class="animate-signal-glow" style="animation-delay: 3s;">
+                <circle cx="1000" cy="580" r="5" fill="#10b981"/>
+                <circle cx="1000" cy="580" r="12" fill="#10b981" fill-opacity="0.3"/>
+                <text x="1015" y="575" fill="#10b981" font-size="11" font-family="monospace">SPREAD 0.0 PIPS</text>
+            </g>
+
+            <!-- Gradient Definitions -->
+            <defs>
+                <linearGradient id="cyanGradientTop" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00a8c5" stop-opacity="0.2"/>
+                    <stop offset="50%" stop-color="#00ccf0" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#10b981" stop-opacity="1"/>
+                </linearGradient>
+                <linearGradient id="cyanGradientBottom" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.8"/>
+                    <stop offset="60%" stop-color="#00a8c5" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#00ccf0" stop-opacity="0.3"/>
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <!-- TOP DASHBOARD SIGNAL BADGE HUD (Top Right Accent) -->
+        <div class="hidden xl:flex absolute top-4 right-10 p-3 rounded-2xl bg-slate-900/80 border border-lxCyan/40 backdrop-blur-md animate-float-slow text-xs font-mono shadow-xl items-center gap-3">
+            <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div>
+            <div>
+                <span class="text-slate-400 text-[10px]">SERVER SYSTEM:</span>
+                <span class="text-emerald-400 font-bold ml-1">ENCRYPTED LIVE FEED</span>
+            </div>
+        </div>
+
+        <!-- BOTTOM DASHBOARD SIGNAL BADGE HUD (Bottom Left Accent) -->
+        <div class="hidden xl:flex absolute bottom-6 left-10 p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/40 backdrop-blur-md animate-float-slow text-xs font-mono shadow-xl items-center gap-3" style="animation-delay: 2.5s;">
+            <i class="fa-solid fa-chart-line text-lxCyan"></i>
+            <div>
+                <span class="text-slate-400 text-[10px]">REALTIME EXECUTION:</span>
+                <span class="text-white font-bold ml-1">&lt; 2ms Latency</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container Content (Top Grid Layout: Left Content & Right Form) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT SIDE: Text Content & Brand Highlights in Hero -->
+            <div class="lg:col-span-6 space-y-5 sm:space-y-6 text-left pt-2">
+                
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lxCyan/15 border border-lxCyan/40 text-lxCyan text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full bg-lxCyan animate-ping"></span>
+                    <span>Next-Gen Forex & CFD Brokerage</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight text-white leading-[1.12]">
+                    Trade Markets with <span class="text-transparent bg-clip-text bg-gradient-to-r from-lxCyan via-cyan-300 to-teal-400">Zero Spreads</span> & High Speed
+                </h1>
+
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+                    Join thousands of global traders. Get instant ECN access with raw spreads starting from <strong class="text-lxCyan">0.0 pips</strong> and ultra-fast market execution.
+                </p>
+
+                <!-- Lirunex Robot Mascot Feature Card -->
+                <div class="p-4 rounded-2xl bg-slate-900/90 border border-lxCyan/30 flex items-center gap-4 shadow-lg backdrop-blur-md">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-lxCyan/30 to-teal-500/20 border border-lxCyan/50 flex-shrink-0 flex items-center justify-center p-1.5">
+                        <!-- Robot Mascot SVG -->
+                        <svg class="w-full h-full text-lxCyan" viewBox="0 0 200 200" fill="none">
+                            <rect x="35" y="45" width="130" height="95" rx="35" fill="#0f2b35" stroke="#00a8c5" stroke-width="6"/>
+                            <rect x="50" y="60" width="100" height="65" rx="20" fill="#08141d"/>
+                            <circle cx="78" cy="92" r="14" fill="#00a8c5"/>
+                            <circle cx="78" cy="92" r="7" fill="#ffffff"/>
+                            <circle cx="122" cy="92" r="14" fill="#00a8c5"/>
+                            <circle cx="122" cy="92" r="7" fill="#ffffff"/>
+                            <path d="M60,140 C60,170 140,170 140,140" stroke="#00a8c5" stroke-width="8" stroke-linecap="round"/>
+                            <rect x="80" y="152" width="40" height="25" rx="5" fill="#00a8c5"/>
+                            <text x="86" y="169" fill="#ffffff" font-size="12" font-weight="bold">LX</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm sm:text-base flex items-center gap-2">
+                            LX Smart Assistant <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-mono">ONLINE</span>
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-snug">
+                            Instant account registration with high-grade data encryption and 24/7 client support.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trust Metrics / Stats Grid -->
+                <div class="grid grid-cols-3 gap-3 pt-2 border-t border-slate-800/80">
+                    <div>
+                        <div class="text-base sm:text-xl font-black text-white">0.0 Pips</div>
+                        <div class="text-[10px] sm:text-xs text-slate-400">Raw Spreads</div>
+                    </div>
+                    <div>
+                        <div class="text-base sm:text-xl font-black text-white">1:1000</div>
+                        <div class="text-[10px] sm:text-xs text-slate-400">Max Leverage</div>
+                    </div>
+                    <div>
+                        <div class="text-base sm:text-xl font-black text-white">Instant</div>
+                        <div class="text-[10px] sm:text-xs text-slate-400">Account Access</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-6 w-full" id="signup-form">
+                <div class="relative glass-hero-card rounded-3xl p-5 sm:p-7 shadow-2xl">
+                    
+                    <!-- Decorative Top Cyan Accent Bar -->
+                    <div class="absolute top-0 left-12 right-12 h-1 bg-gradient-to-r from-transparent via-lxCyan to-transparent rounded-t-full"></div>
+
+                    <div class="mb-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">Open Live Account</h2>
+                            <span class="text-[10px] font-bold px-2.5 py-1 bg-lxCyan/15 text-lxCyan rounded-lg border border-lxCyan/30 uppercase">
+                                Fast Registration
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400">
+                            Fill out your details below to set up your official trading profile.
+                        </p>
+                    </div>
+
+                    <!-- SUCCESS ALERT -->
+                    <div id="successAlert" class="hidden mb-4 p-4 rounded-2xl bg-emerald-950/90 border border-emerald-500/50 text-emerald-200 text-xs">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-lg mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-emerald-300 text-sm">Registration Successful!</h4>
+                                <p class="mt-1 text-slate-300 text-[11px]">
+                                    Thank you for registering. Your details have been submitted successfully.
+                                </p>
+                                <button onclick="resetForm()" class="mt-2 text-xs font-bold underline text-emerald-400 hover:text-white">Register another account</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ERROR ALERT -->
+                    <div id="errorAlert" class="hidden mb-4 p-3 rounded-2xl bg-rose-950/90 border border-rose-500/50 text-rose-200 text-xs">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation text-rose-400 text-base"></i>
+                            <span id="errorMessage" class="text-slate-300 text-[11px]">Please fill in all required fields accurately.</span>
+                        </div>
+                    </div>
+
+                    <!-- REGISTRATION FORM -->
+                    <form id="lirunexSignupForm" onsubmit="handleFormSubmit(event)" class="space-y-3.5">
+                        
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-300 mb-1" for="fullName">
+                                Full Name <span class="text-lxCyan">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-regular fa-user text-xs"></i>
+                                </div>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe"
+                                    class="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-lxDark-input border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-lxCyan focus:ring-1 focus:ring-lxCyan transition-colors text-xs sm:text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-300 mb-1" for="email">
+                                Email Address <span class="text-lxCyan">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-regular fa-envelope text-xs"></i>
+                                </div>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com"
+                                    class="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-lxDark-input border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-lxCyan focus:ring-1 focus:ring-lxCyan transition-colors text-xs sm:text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Phone Number Details -->
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-300 mb-1" for="phone">
+                                Phone Number <span class="text-lxCyan">*</span>
+                            </label>
+                            <div class="flex gap-2">
+                                <select id="countryCode" name="countryCode" class="w-24 sm:w-28 py-2.5 sm:py-3 px-2 rounded-xl bg-lxDark-input border border-slate-700/80 text-white focus:outline-none focus:border-lxCyan text-xs font-semibold">
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+92" selected>🇵🇰 +92</option>
+                                    <option value="+971">🇦🇪 +971</option>
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+60">🇲🇾 +60</option>
+                                    <option value="+65">🇸🇬 +65</option>
+                                </select>
+                                <div class="relative flex-1">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                        <i class="fa-solid fa-phone text-xs"></i>
+                                    </div>
+                                    <input type="tel" id="phone" name="phone" required placeholder="300 1234567"
+                                        class="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-lxDark-input border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-lxCyan focus:ring-1 focus:ring-lxCyan transition-colors text-xs sm:text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mandatory Checkbox: Must Be 18 Years Old -->
+                        <div class="pt-0.5">
+                            <label class="flex items-start gap-2.5 cursor-pointer group">
+                                <input type="checkbox" id="ageConsent" name="ageConsent" required
+                                    class="mt-0.5 w-4 h-4 rounded border-slate-700 bg-lxDark-input text-lxCyan focus:ring-lxCyan focus:ring-offset-slate-900 cursor-pointer">
+                                <span class="text-[11px] text-slate-300 leading-snug group-hover:text-slate-200">
+                                    <strong class="text-white font-semibold">I confirm that I am at least 18 years old</strong> and agree to the <a href="#" class="text-lxCyan hover:underline font-semibold">Terms & Conditions</a> and Risk Disclosure. <span class="text-lxCyan">*</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Submit / Signup Button -->
+                        <div class="pt-1">
+                            <button type="submit" id="submitBtn" class="w-full py-3 sm:py-3.5 px-6 rounded-xl bg-gradient-to-r from-lxCyan via-cyan-500 to-teal-500 hover:from-lxCyan-hover hover:to-teal-600 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-lg shadow-lxCyan/25 hover:shadow-lxCyan/40 transition-all flex items-center justify-center gap-2 group">
+                                <span id="btnText">SIGN UP NOW</span>
+                                <i id="btnSpinner" class="fa-solid fa-spinner fa-spin hidden"></i>
+                                <i id="btnArrow" class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- SSL Security Note -->
+                        <p class="text-[10px] text-center text-slate-500 pt-0.5 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                            256-Bit SSL Encrypted & Secure Submission
+                        </p>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="border-y border-slate-800/80 bg-slate-950/80 py-3 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between text-xs font-mono space-x-6 overflow-x-auto whitespace-nowrap scrollbar-none py-0.5">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">EUR/USD</span>
+                <span class="text-emerald-400 font-semibold">1.08420</span>
+                <span class="text-emerald-500 text-[10px]"><i class="fa-solid fa-caret-up"></i> +0.14%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">GBP/USD</span>
+                <span class="text-emerald-400 font-semibold">1.26850</span>
+                <span class="text-emerald-500 text-[10px]"><i class="fa-solid fa-caret-up"></i> +0.22%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">USD/JPY</span>
+                <span class="text-rose-400 font-semibold">154.320</span>
+                <span class="text-rose-500 text-[10px]"><i class="fa-solid fa-caret-down"></i> -0.08%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">XAU/USD (Gold)</span>
+                <span class="text-emerald-400 font-semibold">2,384.50</span>
+                <span class="text-emerald-500 text-[10px]"><i class="fa-solid fa-caret-up"></i> +0.65%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">BTC/USD</span>
+                <span class="text-emerald-400 font-semibold">67,420.00</span>
+                <span class="text-emerald-500 text-[10px]"><i class="fa-solid fa-caret-up"></i> +1.80%</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 sm:py-20 bg-slate-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-xs font-bold text-lxCyan uppercase tracking-widest mb-2">Why Lirunex Platform</h2>
+            <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Built for High Precision Traders</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-lxCyan/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-lxCyan/15 text-lxCyan flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-2">Ultra-Tight Spreads</h4>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Trade forex majors with raw spreads starting from 0.0 pips and zero hidden commissions.
+                </p>
+            </div>
+
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-lxCyan/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-lxCyan/15 text-lxCyan flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-2">High Execution Speed</h4>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Ultra-low latency trading servers powered by tier-1 global liquidity providers.
+                </p>
+            </div>
+
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-lxCyan/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-lxCyan/15 text-lxCyan flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-2">Regulated & Safe</h4>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Segregated client funds held with tier-1 international banking institutions.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="bg-slate-950 border-t border-slate-900 py-8 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <svg class="h-6 w-auto text-lxCyan" viewBox="0 0 120 70" fill="currentColor">
+                <path d="M0,0 L24,0 L24,50 L48,50 L48,70 L0,70 Z" />
+                <path d="M52,0 L78,35 L52,70 L76,70 L90,50 L104,70 L128,70 L102,35 L128,0 L104,0 L90,20 L76,0 Z" />
+            </svg>
+            <span class="text-white font-bold tracking-wider">LIRUNEX</span>
+        </div>
+        <div>© 2026 LIRUNEX Limited. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+    // ---------------------------------------------------------------------------------
+    // PASTE YOUR NEW GOOGLE APPS SCRIPT WEB APP URL BETWEEN THE QUOTES BELOW:
+    // Example: const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycb.../exec";
+    // ---------------------------------------------------------------------------------
+    const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzQXxZ7t8_i1_OEJRBpwIg9JWJTVXhE_126DGP9qDmRYysAWrKMtPtcJR65uOzZ7zk3/exec"; 
+
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const btnArrow = document.getElementById('btnArrow');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const countryCode = document.getElementById('countryCode').value;
+        const phone = document.getElementById('phone').value.trim();
+        const ageConsent = document.getElementById('ageConsent').checked;
+
+        if (!fullName || !email || !phone || !ageConsent) {
+            showError("Please fill in all required fields and verify age consent.");
+            return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.innerText = "SUBMITTING...";
+        btnSpinner.classList.remove('hidden');
+        btnArrow.classList.add('hidden');
+        errorAlert.classList.add('hidden');
+        successAlert.classList.add('hidden');
+
+        const payload = {
+            fullName: fullName,
+            email: email,
+            phone: countryCode + " " + phone,
+            ageConsent: ageConsent ? "YES (18+)" : "NO"
+        };
+
+        try {
+            if (WEBHOOK_URL && WEBHOOK_URL.trim() !== "") {
+                // Send as text/plain JSON payload to smoothly bypass browser CORS restrictions
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } else {
+                console.warn("WEBHOOK_URL is empty. Set your deployed Apps Script URL.");
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+
+            successAlert.classList.remove('hidden');
+            document.getElementById('lirunexSignupForm').reset();
+
+        } catch (err) {
+            console.error("Submission error:", err);
+            showError("An error occurred while submitting your details. Please try again.");
+        } finally {
+            submitBtn.disabled = false;
+            btnText.innerText = "SIGN UP NOW";
+            btnSpinner.classList.add('hidden');
+            btnArrow.classList.remove('hidden');
+        }
+    }
+
+    function showError(msg) {
+        document.getElementById('errorMessage').innerText = msg;
+        document.getElementById('errorAlert').classList.remove('hidden');
+    }
+
+    function resetForm() {
+        document.getElementById('lirunexSignupForm').reset();
+        document.getElementById('successAlert').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
